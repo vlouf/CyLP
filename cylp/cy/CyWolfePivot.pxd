@@ -9,3 +9,4 @@ cdef class CyWolfePivot(CyClpPrimalColumnPivotBase):
                      CppCoinIndexedVector* v4, CppCoinIndexedVector* v5)
     cdef CyClpPrimalColumnPivot* clone(self, bint copyData)
     cdef void saveWeights(self, CyClpSimplex.CppIClpSimplex* model, int mode)
+

@@ -22,11 +22,11 @@ cdef class CyWolfePivot(CyClpPrimalColumnPivotBase):
         m = self.cyModel
 
         # Update the reduced costs, for both the original and the slack variables
-        if updates.nElements:
-            m.updateColumnTranspose(spareRow2, updates)
-            m.transposeTimes(-1, updates, spareCol2, spareCol1)
-            m.reducedCosts[s.nVariables:][updates.indices] -= updates.elements[:updates.nElements]
-            m.reducedCosts[:s.nVariables][spareCol1.indices] -= spareCol1.elements[:spareCol1.nElements]
+        # if updates.nElements:
+        #     m.updateColumnTranspose(spareRow2, updates)
+        #     m.transposeTimes(-1, updates, spareCol2, spareCol1)
+        #     m.reducedCosts[s.nVariables:][updates.indices] -= updates.elements[:updates.nElements]
+        #     m.reducedCosts[:s.nVariables][spareCol1.indices] -= spareCol1.elements[:spareCol1.nElements]
         updates.clear()
         spareCol1.clear()
 
@@ -69,3 +69,4 @@ cdef class CyWolfePivot(CyClpPrimalColumnPivotBase):
 
     cdef void saveWeights(self, CyClpSimplex.CppIClpSimplex * model, int mode):
         self.CppSelf.setModel(model)
+
